@@ -1,69 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Video Tracking App
 
-## Available Scripts
+I was given the task to create a full stack application that'd be able to add videos and get relevant information about them. The frontend uses `react.js` and the backend uses `node.js` while use `Typescript`.
 
-In the project directory, you can run:
+### Instructions to get setup
 
-### `npm start`
+Have the pre-requisite node.js and npm install: https://nodejs.org/en/download/
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+After having `node.js` and `npm` installed, clone the repo to your computer and change into the repo directory:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```text
+git clone https://github.com/Raul-Alvarez/video-tracking.git
+cd message-board
+```
 
-### `npm test`
+Install all the dependecies:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```text
+npm run install:all
+```
 
-### `npm run build`
+Run the app:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```text
+npm run dev
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Go to http://localhost:3000 to get started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If you want to remove all builds and node_modules, run:
 
-### `npm run eject`
+```text
+npm run clean:all
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Notes on the structure of the app
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The entry point for the frontend would be in `src/client/src/App.tsx`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# message-board
+The entry point for the backend would be in `src/server/src/index.ts`.
