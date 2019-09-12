@@ -1,10 +1,10 @@
 import { createContext } from 'react';
 import Video from '../../types/video';
 
+// Leave interface attributes as optional
 interface ContextProps {
   videos: Video[];
   addNewVideo: (name: string, brand: string) => void;
-  updateCount: (video_id: string) => void;
 
 }
 const VideoContext = createContext<Partial<ContextProps>>({});

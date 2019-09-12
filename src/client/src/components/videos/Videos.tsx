@@ -4,6 +4,7 @@ import VideoItem from './VideoItem';
 import { useVideoContext } from '../../App'
 
 const Videos: React.FC = () => {
+  // Context to get list of videos
   const { videos } = useVideoContext();
 
   return (
@@ -24,7 +25,7 @@ const Videos: React.FC = () => {
               video_id={video.id!}
               date_published={video.published_date!}
             />
-          )) : <h3>There are no videos</h3>
+          )) : ( <h3>There are no videos</h3> )
         }
       </div>
     </div>

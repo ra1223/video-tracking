@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { useVideoContext } from '../../App';
 
 const AddVideo: React.FC = () => {
+  // Hooks
   const [name, setName] = useState('');
   const [brand, setBrand] = useState('Thrillest');
   const [redirect, setRedirect] = useState(false);
@@ -13,15 +14,17 @@ const AddVideo: React.FC = () => {
     throw new Error('addNewVideo not working');
   }
   
-
+  // Change textbox value when user types something
   const handleTextChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setName(e.target.value);
   };
 
+  // Change dropdown value when user selects something
   const handleDropdownChange = (e: ChangeEvent<HTMLSelectElement>): void => {
     setBrand(e.target.value);
   };
 
+  // Once the user clicks submit
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     addNewVideo(name, brand);

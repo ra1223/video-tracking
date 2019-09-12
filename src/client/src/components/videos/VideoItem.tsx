@@ -8,6 +8,7 @@ interface Props {
 }
 
 const VideoItem: React.FC<Props> = ({ name, video_id, date_published }) => {
+  // Hook
   const [redirect, setRedirect] = useState(false);
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>): void => {

@@ -6,10 +6,20 @@ import { all } from 'q';
 
 const router = Router();
 
-// Simulate data for database
+/**
+ * Simulate data for database
+ * 
+ * videoList will contain all data about videos
+ * videCount will contain view counts for videos.
+ * 
+ * Also note that for the map, it represents: <video_id, all Counts that landed on different dats> 
+ * */ 
 let videoList: Video[] = [];
 let videoCount: Map<string, Count[]> = new Map();
 
+/**
+ * Get all videos without counts
+ */
 router.get('/video', (req: Request, res: Response) => {
   try {
     res.status(200).json({ videoList });
@@ -20,6 +30,9 @@ router.get('/video', (req: Request, res: Response) => {
   }
 });
 
+/**
+ * Add new video
+ */
 router.post('/video', (req: Request, res: Response) => {
   try {
     const { body: { id, name, brand, published_date } } = req;
@@ -48,12 +61,19 @@ router.post('/video', (req: Request, res: Response) => {
   }
 });
 
+/**
+ * Update count for video
+ */
 router.put('/video/view/:video_id', (req: Request, res: Response) => {
   try {
     const { params: { video_id } } = req;
     
     const allCounts: Count[] = videoCount.get(video_id) || [];
 
+    /**
+     * If it's a new day, add a new Count object with an initial value of 1.
+     * Else, update the count 
+     */
     if (allCounts[allCounts.length - 1].date_viewed !== new Date().toDateString()) {
       allCounts.push({ id: video_id, count: 1, date_viewed: new Date().toDateString()});
     } else {
@@ -69,17 +89,22 @@ router.put('/video/view/:video_id', (req: Request, res: Response) => {
   }
 });
 
+/**
+ * Get video information and views
+ */
 router.get('/video/report/:video_id', (req: Request, res: Response) => {
   try {
     const { params: { video_id } } = req;
-
-    let date = '';
 
     const videoInfo: Video = videoList.find((video): boolean => video.id === video_id) || { id: '', name: '', brand: '', published_date: ''};
 
     let count = 0;
     const allCounts: Count[] = videoCount.get(video_id) || [];
     allCounts.forEach((singleCount: Count) => {
+      /**
+       * If the query.date value was passed in, only count views from the query.date until the most recent date.
+       * Else, add the views for all the days.
+       */
       if (
         req.query.date && 
         new Date(singleCount.date_viewed) >= new Date(req.query.date)
